@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot MVC</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/3.9.2/full.min.css"
+          integrity="sha512-6FI+LYzXdRf6DgfKUMGkfl8+vG9EPB8qiylC8PrdDRATHv8J9qgmID03FVPg4c62ZJNrcIIMQ0/5n6KtfFUWYQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+    <div class="artboard artboard-horizontal phone-6">
+        <header th:replace="layout/plantilla :: header"></header>
+
+        <a class="btn btn-primary" th:href="@{/}">[[#{action.back}]]</a>
+        <br>
+        <div class="card-body">
+            <form action="#" th:action="@{/save}" th:object="${persona}" method="post">
+                <input type="hidden" th:value = "*{id}" name="id">
+
+                <label>[[#{persona.nombre}]]</label>
+                <input type="text" th:field = "*{name}" name="name"/>
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error Name</span>
+
+                <br><br>
+                <label>[[#{persona.apellido}]]</label>
+                <input type="text" th:field = "*{lastname}" name="lastname"/>
+                <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Error Lastname</span>
+
+                <br><br>
+                <label>[[#{persona.email}]]</label>
+                <input type="text" th:field = "*{email}" name="email"/>
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error Email</span>
+                <br><br>
+                <input type="submit" class="btn btn-primary" name="guardar" th:value="#{action.guardar}" />
+            </form>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot MVC</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/3.9.2/full.min.css"
+          integrity="sha512-6FI+LYzXdRf6DgfKUMGkfl8+vG9EPB8qiylC8PrdDRATHv8J9qgmID03FVPg4c62ZJNrcIIMQ0/5n6KtfFUWYQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+    <div class="hero min-h-screen bg-base-200">
+        <header th:fragment="header">
+            <h1 th:text="#{plantilla.title}">Titulo</h1>
+        </header>
+        <footer th:fragment="footer" class="footer footer-center p-4 bg-base-300 text-base-content">
+            <aside>
+                <p>&copy; [[#{plantilla.pie-pagina}]]</p>
+            </aside>
+            <a th:href="@{/(lang=es)}">ES</a>
+            <br>
+            <a th:href="@{/(lang=en)}">EN</a>
+        </footer>
+    </div>
+</body>
+</html>

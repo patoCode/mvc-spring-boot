@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot MVC</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/3.9.2/full.min.css"
+          integrity="sha512-6FI+LYzXdRf6DgfKUMGkfl8+vG9EPB8qiylC8PrdDRATHv8J9qgmID03FVPg4c62ZJNrcIIMQ0/5n6KtfFUWYQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+    <div class="artboard artboard-horizontal phone-6">
+        <header th:replace="layout/plantilla :: header"></header>
+        <div class="btn-group">
+            <a
+                    th:href="@{/create}"
+                    class="btn btn-secondary btn-outline">
+                [[#{action.crear}]]
+            </a>
+        </div>
+        <br>
+        <table class="table table-zebra">
+            <thead>
+                <tr>
+                    <th>[[#{persona.nombre}]]</th>
+                    <th>[[#{persona.apellido}]]</th>
+                    <th>[[#{persona.email}]]</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="persona : ${personas}">
+                    <td><span th:text="${persona.name}"></span></td>
+                    <td><span th:text="${persona.lastname}"></span></td>
+                    <td><span th:text="${persona.email}"></span></td>
+                    <td>
+                        <a th:href="@{/edit/} + ${persona.id}" class="btn btn-outline  btn-info">[[#{action.editar}]]</a>
+                        <a th:href="@{/delete(id=${persona.id})} " class="btn btn-outline btn-error">[[#{action.borrar}]]</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </div>
+
+</body>
+</html>
